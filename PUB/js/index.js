@@ -10,7 +10,7 @@ $(document).ready(function () {
     $("#v3x").append(opts);
     $("#v3y").append(opts);
     
-    // hide input sections
+
     $('#echoice').change(function () {
         if ($(this).val() == 'rc') {
             $('.rowcol').show();
@@ -23,7 +23,6 @@ $(document).ready(function () {
         }
     });
 
-    // call ajax functions on submit
     $('#btnSubmit').click(function (event) {
         if ($('#echoice').val() == 'rc' )
             GetVertices($("#triRow").val(), $("#triCol").val());
@@ -37,7 +36,7 @@ $(document).ready(function () {
     
 });
 
-// retrieves vertices from web api service call
+
 function GetVertices(row, column) {
 
     var param = { row: row, column: column };
@@ -45,7 +44,7 @@ function GetVertices(row, column) {
     $.ajax({
 
         url: "api/GetVertices",
-        data: param, 
+        data: param, //JSON.stringify(param),
         method: "GET",
         headers: { "Accept": "application/json; odata=verbose" },
         contentType: 'application/json; charset=utf-8',
@@ -62,7 +61,6 @@ function GetVertices(row, column) {
 
 }
 
-// retrieves row and column from web api service call
 function GetRowColumn(v1x, v1y, v2x, v2y, v3x, v3y) {
 
     var param = { V1x: v1x, V1y: v1y, V2x: v2x, V2y: v2y, V3x: v3x, V3y: v3y };
@@ -84,3 +82,15 @@ function GetRowColumn(v1x, v1y, v2x, v2y, v3x, v3y) {
     });
 
 }
+
+//function ValidateVertices()
+//{
+//    var verts = [
+//        [0, 10, 0, 0, 10, 0],
+//        [10, 0, 10, 10, 0, 0],
+//        [10, 10, 0, 10, 20, 10],
+//        [20, 0, 20, 10, 10, 0],
+//        [20, 10, 20, 0, 30, 10],
+//        []
+//    ];
+//}

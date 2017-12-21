@@ -1,0 +1,12 @@
+﻿body {
+    background-color: lightblue; 
+    touch-action: manipulation;  
+}
+
+.form-control {
+    width: 200px !important;
+}
+
+.container {
+    background-color: white;
+}
