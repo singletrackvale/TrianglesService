@@ -135,23 +135,29 @@ namespace TrianglesService.Models
         {
             bool rtn = false;
 
-            // based on v1 values
-            if ((v1x >= 0 && v1x <= 60) && (v1y >= 0 && v1y <= 60))
+            // ensure power of 10
+            if (v1x % 10 == 0 && v1y % 10 == 0 && v2x % 10 == 0 && v2y % 10 == 0 && v3x % 10 == 0 && v3y % 10 == 0)
             {
-                if( (v2x == v1x) && (v2y == (v1y + 10)) ) // odd
+
+                // make sure the coordinates are a valid triangle
+                if ((v1x >= 0 && v1x <= 60) && (v1y >= 0 && v1y <= 60))
                 {
-                    if( (v3x == (v1x - 10)) && v3y == v1y )
+                    if ((v2x == v1x) && (v2y == (v1y + 10))) // odd
                     {
-                        rtn = true;
+                        if ((v3x == (v1x - 10)) && v3y == v1y)
+                        {
+                            rtn = true;
+                        }
+                    }
+                    else if ((v2x == v1x) && (v2y == (v1y - 10))) // even
+                    {
+                        if ((v3x == (v1x + 10)) && v3y == v1y)
+                        {
+                            rtn = true;
+                        }
                     }
                 }
-                else if ( (v2x == v1x) && (v2y == (v1y - 10)) ) // even
-                {
-                    if( (v3x == (v1x + 10)) && v3y == v1y )
-                    {
-                        rtn = true;
-                    }
-                }
+
             }
 
             return rtn;
