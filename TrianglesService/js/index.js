@@ -55,7 +55,7 @@ function GetVertices(row, column) {
                 "v3x: " + data.V3x + ", v3y: " + data.V3y);            
         },
         error: function (data) {
-            alert("There was an error: " + data.error);
+            alert("There was an retrieving the vertices: " + data.error);
         }
 
     });
@@ -78,7 +78,7 @@ function GetRowColumn(v1x, v1y, v2x, v2y, v3x, v3y) {
             alert("row: " + data.Row + ", column: " + data.Column);
         },
         error: function (data) {
-            alert("Invalid vertices or other error: " + data.error);
+            alert("Invalid vertices entered, please use the grid image as a guide.");
         }
 
     });
